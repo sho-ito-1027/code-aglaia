@@ -1,1 +1,2 @@
-# template-Xcode
+# code-aglaia
+workspace型共有アプリ
