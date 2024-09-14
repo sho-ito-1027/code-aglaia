@@ -18,6 +18,7 @@
 		C6E674D02C92E43100136943 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C6E674CF2C92E43100136943 /* FirebaseAuth */; };
 		C6E674D22C92E43100136943 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = C6E674D12C92E43100136943 /* FirebaseCrashlytics */; };
 		C6E674D52C92E65800136943 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = C6E674D42C92E65800136943 /* ComposableArchitecture */; };
+		C6E674D92C95C0BE00136943 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6E674D82C95C0BE00136943 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		C6E674B82C92E03800136943 /* AglaiaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AglaiaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E674BC2C92E03800136943 /* AglaiaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AglaiaUITests.swift; sourceTree = "<group>"; };
 		C6E674BE2C92E03800136943 /* AglaiaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AglaiaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C6E674D82C95C0BE00136943 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				C6E674A62C92E03800136943 /* Aglaia.entitlements */,
 				C6E674A02C92E03600136943 /* AglaiaApp.swift */,
 				C6E674A42C92E03800136943 /* Assets.xcassets */,
+				C6E674D72C95C07000136943 /* GoogleService */,
 				C6E674CB2C92E05400136943 /* Login */,
 				C6E674A72C92E03800136943 /* Preview Content */,
 			);
@@ -145,6 +148,14 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		C6E674D72C95C07000136943 /* GoogleService */ = {
+			isa = PBXGroup;
+			children = (
+				C6E674D82C95C0BE00136943 /* GoogleService-Info.plist */,
+			);
+			path = GoogleService;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -155,6 +166,7 @@
 				C6E674992C92E03600136943 /* Sources */,
 				C6E6749A2C92E03600136943 /* Frameworks */,
 				C6E6749B2C92E03600136943 /* Resources */,
+				C6E674DA2C95C40200136943 /* Upload Crashlytics Symbol */,
 			);
 			buildRules = (
 			);
@@ -261,6 +273,7 @@
 			files = (
 				C6E674A92C92E03800136943 /* Preview Assets.xcassets in Resources */,
 				C6E674A52C92E03800136943 /* Assets.xcassets in Resources */,
+				C6E674D92C95C0BE00136943 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +292,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C6E674DA2C95C40200136943 /* Upload Crashlytics Symbol */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Upload Crashlytics Symbol";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${BUILD_DIR%Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C6E674992C92E03600136943 /* Sources */ = {
@@ -360,7 +394,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -421,7 +455,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -445,10 +479,12 @@
 				CODE_SIGN_ENTITLEMENTS = Aglaia/Aglaia.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Aglaia/Preview Content\"";
 				DEVELOPMENT_TEAM = U38WFWB5D6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -465,6 +501,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.aryzae.Aglaia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -487,6 +524,7 @@
 				DEVELOPMENT_TEAM = U38WFWB5D6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -503,6 +541,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.aryzae.Aglaia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
