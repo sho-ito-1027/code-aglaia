@@ -19,6 +19,7 @@
 		C6E674D22C92E43100136943 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = C6E674D12C92E43100136943 /* FirebaseCrashlytics */; };
 		C6E674D52C92E65800136943 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = C6E674D42C92E65800136943 /* ComposableArchitecture */; };
 		C6E674D92C95C0BE00136943 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6E674D82C95C0BE00136943 /* GoogleService-Info.plist */; };
+		C6E674DD2C95D44900136943 /* SwiftFormat in Frameworks */ = {isa = PBXBuildFile; productRef = C6E674DC2C95D44900136943 /* SwiftFormat */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C6718DE52C95F07B0079B854 /* BuildTools */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = BuildTools; sourceTree = "<group>"; };
 		C6E6749D2C92E03600136943 /* Aglaia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aglaia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E674A02C92E03600136943 /* AglaiaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AglaiaApp.swift; sourceTree = "<group>"; };
 		C6E674A22C92E03600136943 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				C6E674D22C92E43100136943 /* FirebaseCrashlytics in Frameworks */,
 				C6E674CE2C92E43100136943 /* FirebaseAnalytics in Frameworks */,
 				C6E674D52C92E65800136943 /* ComposableArchitecture in Frameworks */,
+				C6E674DD2C95D44900136943 /* SwiftFormat in Frameworks */,
 				C6E674D02C92E43100136943 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,6 +91,7 @@
 				C6E6749F2C92E03600136943 /* Aglaia */,
 				C6E674B12C92E03800136943 /* AglaiaTests */,
 				C6E674BB2C92E03800136943 /* AglaiaUITests */,
+				C6718DE52C95F07B0079B854 /* BuildTools */,
 				C6E6749E2C92E03600136943 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -163,6 +167,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6E674C22C92E03800136943 /* Build configuration list for PBXNativeTarget "Aglaia" */;
 			buildPhases = (
+				C6E674E32C95E0E500136943 /* Run SwiftFormat */,
 				C6E674992C92E03600136943 /* Sources */,
 				C6E6749A2C92E03600136943 /* Frameworks */,
 				C6E6749B2C92E03600136943 /* Resources */,
@@ -178,6 +183,7 @@
 				C6E674CF2C92E43100136943 /* FirebaseAuth */,
 				C6E674D12C92E43100136943 /* FirebaseCrashlytics */,
 				C6E674D42C92E65800136943 /* ComposableArchitecture */,
+				C6E674DC2C95D44900136943 /* SwiftFormat */,
 			);
 			productName = Aglaia;
 			productReference = C6E6749D2C92E03600136943 /* Aglaia.app */;
@@ -254,6 +260,7 @@
 			packageReferences = (
 				C6E674CC2C92E43100136943 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				C6E674D32C92E65800136943 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				C6E674DB2C95D44900136943 /* XCRemoteSwiftPackageReference "SwiftFormat" */,
 			);
 			productRefGroup = C6E6749E2C92E03600136943 /* Products */;
 			projectDirPath = "";
@@ -296,6 +303,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		C6E674DA2C95C40200136943 /* Upload Crashlytics Symbol */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -311,6 +319,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${BUILD_DIR%Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\n";
+		};
+		C6E674E32C95E0E500136943 /* Run SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftFormat";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd BuildTools\nSDKROOT=(xcrun --sdk macosx --show-sdk-path)\n#swift package update #Uncomment this line temporarily to update the version used to the latest matching your BuildTools/Package.swift file\nswift run -c release swiftformat \"$SRCROOT\" --swiftversion ${SWIFT_VERSION:-\"default\"}\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -700,6 +727,14 @@
 				minimumVersion = 1.14.0;
 			};
 		};
+		C6E674DB2C95D44900136943 /* XCRemoteSwiftPackageReference "SwiftFormat" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nicklockwood/SwiftFormat.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.54.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -722,6 +757,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C6E674D32C92E65800136943 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		C6E674DC2C95D44900136943 /* SwiftFormat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6E674DB2C95D44900136943 /* XCRemoteSwiftPackageReference "SwiftFormat" */;
+			productName = SwiftFormat;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
